@@ -1,0 +1,11 @@
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: CronJobSource
+metadata:
+  name: cronjobsource-aloha
+spec:
+  schedule: "* * * * *"
+  data: '{"message": "Aloha"}'
+  sink:
+    apiVersion: serving.knative.dev/v1alpha1
+    kind: Service
+    name: qkafka-knative-consumer

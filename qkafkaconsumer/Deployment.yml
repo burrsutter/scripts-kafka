@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: qkafkaconsumer
+  name: qkafkaconsumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qkafkaconsumer
+  template:
+    metadata:
+      labels:
+        app: qkafkaconsumer
+    spec:
+      containers:
+      - name: qkafkaconsumer
+        image: docker.io/burrsutter/qkafkaconsumer:1.0.0
+        ports:
+          - containerPort: 8081
+        resources:
+          requests: 
+            memory: "40Mi" 
+            cpu: "250m" 
+          limits:
+            memory: "40Mi"
+            cpu: "250m" 

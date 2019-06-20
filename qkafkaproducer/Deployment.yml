@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: qkafkaproducer
+  name: qkafkaproducer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qkafkaproducer
+  template:
+    metadata:
+      labels:
+        app: qkafkaproducer
+    spec:
+      containers:
+      - name: qkafkaproducer
+        image: docker.io/burrsutter/qkafkaproducer:1.0.0
+        imagePullPolicy: Always # because I am in development-mode
+        ports:
+          - containerPort: 8080
+        resources:
+          requests: 
+            memory: "40Mi" 
+            cpu: "250m" 
+          limits:
+            memory: "40Mi"
+            cpu: "250m" 
