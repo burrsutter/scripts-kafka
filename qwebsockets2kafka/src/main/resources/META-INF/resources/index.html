@@ -1,0 +1,95 @@
+<html>
+  <head>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly.min.css">
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly-additions.min.css">  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+  </head>
+  <body>
+
+    <h1>Use this on your <font size="100" color=red>Phone and Shake</font></h1>
+
+    <script language="javascript">
+      var connected = false;
+      var socket;
+
+      $( document ).ready(function() {
+        connect();
+      });
+
+
+      // Handle Websocket Connection
+      var connect = function() {
+        if (! connected) {
+          console.log(location.host);
+          socket = new WebSocket("ws://" + location.host + "/shake");
+          socket.onopen = function() {
+            connected = true;
+            console.log("Connected to the web socket");
+          };                  
+        }
+      }
+      /*
+        var x, y, z, absolute, alpha, beta, gamma;
+        x = event.accelerationIncludingGravity.x;
+        y = event.accelerationIncludingGravity.y;
+        z = event.accelerationIncludingGravity.z;
+        absolute = event.absolute;
+        alpha    = event.alpha;
+        beta     = event.beta;
+        gamma    = event.gamma;
+      */
+
+      // https://www.raymondcamden.com/2017/04/25/using-device-motion-on-the-web
+      
+	    window.addEventListener('devicemotion', motionlistener, false);
+      
+
+      let lastX, lastY, lastZ;
+      let moveCounter = 0;
+
+      function motionlistener(e) {
+	      let acc = e.acceleration;
+	      if(!acc.hasOwnProperty('x')) {
+		      acc = e.accelerationIncludingGravity;
+	      }
+
+	      if(!acc.x) return;
+
+      	//only log if x,y,z > 1
+	      if(Math.abs(acc.x) >= 1 &&
+	      Math.abs(acc.y) >= 1 &&
+	      Math.abs(acc.z) >=1) {
+		      //console.log('motion', acc);
+		      if(!lastX) {
+			      lastX = acc.x;
+    		  	lastY = acc.y;
+		    	  lastZ = acc.z;
+    			  return;
+      		}
+
+		    let deltaX = Math.abs(acc.x - lastX);
+		    let deltaY = Math.abs(acc.y - lastY);
+		    let deltaZ = Math.abs(acc.z - lastZ);
+		
+		    if(deltaX + deltaY + deltaZ > 3) {
+			    moveCounter++;
+		    } else {
+			    moveCounter = Math.max(0, --moveCounter);
+		    }
+
+		    if(moveCounter > 2) {
+          console.log('SHAKE!!!');
+          socket.send("Shake");
+			    moveCounter = 0;
+		    }
+
+		    lastX = acc.x;
+		    lastY = acc.y;
+		    lastZ = acc.z;
+		
+    	} // z >= 1
+      } // motion
+    </script>
+  </body>
+</html>

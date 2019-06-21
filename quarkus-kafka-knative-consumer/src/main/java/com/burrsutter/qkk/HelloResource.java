@@ -21,7 +21,13 @@ public class HelloResource {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/")
     public String eventGreet(String cloudEventJson) {
-      System.out.println("cloudEventJson: " + cloudEventJson);;
+      System.out.println("cloudEventJson: " + cloudEventJson);
+
+      try {
+        Thread.sleep(1000);
+      } catch (Exception e) {
+        System.err.println(e);
+      }
       return "OK";
     }
   
