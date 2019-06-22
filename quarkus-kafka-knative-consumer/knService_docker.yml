@@ -11,13 +11,13 @@ spec:
             autoscaling.knative.dev/target: "1"      
         spec:
           container:
-            image: docker.io/burrsutter/qkafka-knative-consumer:1.0.0
+            image: docker.io/burrsutter/qkafka-knative-consumer:1.0.1
             resources:
               requests: 
-                memory: "30Mi" 
+                memory: "50Mi" 
                 cpu: "75m" 
               limits:
-                memory: "30Mi"
+                memory: "50Mi"
                 cpu: "75m" 
             livenessProbe:
               httpGet:
