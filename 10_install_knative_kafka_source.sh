@@ -4,7 +4,7 @@
 # | kubectl apply --filename -
 
 kubectl create namespace knative-sources
-kubens knative-sources
+
 kubectl apply -f https://raw.githubusercontent.com/openshift/knative-eventing-contrib/release-v0.6.0/openshift/release/knative-eventing-kafka-sources-v0.6.0.yaml
 
 #curl -L "https://raw.githubusercontent.com/openshift/knative-eventing/release-v0.6.0/openshift/release/knative-eventing-kafka-v0.6.0.yaml" \
