@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: qkafkaproducer
-        image: docker.io/burrsutter/qkafkaproducer:1.0.0
+        image: docker.io/burrsutter/qkafkaproducer:1.0.1
         imagePullPolicy: Always # because I am in development-mode
         ports:
           - containerPort: 8080

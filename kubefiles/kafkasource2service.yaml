@@ -1,11 +1,11 @@
 apiVersion: sources.eventing.knative.dev/v1alpha1
 kind: KafkaSource
 metadata:
-  name: kafkasource-mytopic3
+  name: kafkasource-mytopic1
 spec:
   consumerGroup: new
-  bootstrapServers: burr-cluster-kafka-bootstrap.franz:9092
-  topics: mytopic3
+  bootstrapServers: burr-cluster-kafka-bootstrap:9092
+  topics: mytopic1
   sink:
     apiVersion: serving.knative.dev/v1alpha1
     kind: Service

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t burrsutter/qkafkaconsumer:1.0.0 .
+docker build -t burrsutter/qkafkaconsumer:1.0.1 .

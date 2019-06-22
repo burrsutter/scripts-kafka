@@ -9,8 +9,6 @@ spec:
     listeners:
       plain: {}
       tls: {}
-      external: 
-        type: route
     readinessProbe:
       initialDelaySeconds: 15
       timeoutSeconds: 5
