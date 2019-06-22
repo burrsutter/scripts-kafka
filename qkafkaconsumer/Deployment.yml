@@ -17,7 +17,10 @@ spec:
       containers:
       - name: qkafkaconsumer
         image: docker.io/burrsutter/qkafkaconsumer:1.0.1
-        imagePullPolicy: Always # because I am in development-mode        
+        imagePullPolicy: Always # because I am in development-mode
+        env:
+        - name: MP_MESSAGING_INCOMING_INPUT_BOOTSTRAP_SERVERS
+          value: burr-cluster-kafka-bootstrap:9092
         ports:
           - containerPort: 8081
         resources:
