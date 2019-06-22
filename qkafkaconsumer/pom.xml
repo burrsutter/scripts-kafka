@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.acme.quarkus.sample</groupId>
   <artifactId>qkafkaconsumer</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.2</version>
   <properties>
     <restassured.version>3.3.0</restassured.version>
     <surefire-plugin.version>2.22.0</surefire-plugin.version>
