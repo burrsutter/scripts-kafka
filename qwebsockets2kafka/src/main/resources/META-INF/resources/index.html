@@ -6,17 +6,34 @@
  
   </head>
   <body>
-
-    <h1>Use this on your <font size="100" color=red>Phone and Shake</font></h1>
-
+    
+    <font size="100" color=red><button id="button" onclick="myFunction()">Click & Shake Me</button></font> <br/>
+    
+    <font size="100" color=green>
+    X: <div id="x"></div> <br/>
+    Y: <div id="y"></div> <br/>
+    Z: <div id="z"></div> <br/>
+    </font>
+    
     <script language="javascript">
       var connected = false;
       var socket;
+      var startShaking = false;
 
       $( document ).ready(function() {
+        document.getElementById("x").innerText = "0";
+        document.getElementById("y").innerText = "0";
+        document.getElementById("z").innerText = "0";
         connect();
       });
 
+      function myFunction() {
+        
+        alert(
+          "start shaking"
+        );        
+        
+      }
 
       // Handle Websocket Connection
       var connect = function() {
@@ -61,6 +78,10 @@
 	      Math.abs(acc.y) >= 1 &&
 	      Math.abs(acc.z) >=1) {
 		      //console.log('motion', acc);
+          document.getElementById("x").innerHTML = acc.x;
+          document.getElementById("y").innerHTML = acc.y;
+          document.getElementById("z").innerHTML = acc.z;
+
 		      if(!lastX) {
 			      lastX = acc.x;
     		  	lastY = acc.y;
@@ -80,7 +101,7 @@
 
 		    if(moveCounter > 2) {
           console.log('SHAKE!!!');
-          socket.send("Shake");
+          socket.send(deltaX + "," + deltaY + "," + deltaZ);
 			    moveCounter = 0;
 		    }
 

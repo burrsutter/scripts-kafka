@@ -29,12 +29,15 @@ public class WebSocket {
 
     @OnOpen
     public void onOpen(Session session) {
-        LOG.info("onOpen");
+        String sessionId = session.getId();
+        LOG.info("onOpen: " + sessionId);
+        String kafkaMsg = "{\"message\":\"" + "onOpen" + "-" + sessionId + "\"}";
+        emitter.send(kafkaMsg);
     }
 
     @OnClose
     public void onClose(Session session) {
-        LOG.info("onClose");
+        LOG.info("onClose: " + session.getId());
     }
 
     @OnError
@@ -44,7 +47,7 @@ public class WebSocket {
 
     @OnMessage
     public void onMessage(String message) {
-        String kafkaMsg = counter++ + " " + message;
+        String kafkaMsg = "{\"message\":\"" + message + "\"}";
         LOG.info(kafkaMsg);
         emitter.send(kafkaMsg);
     }
