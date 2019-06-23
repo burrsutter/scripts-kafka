@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/")
 public class HelloResource {
 
-    boolean goslow = false;
+    boolean goslow = true;
 
     @GET  
     @Produces(MediaType.TEXT_PLAIN)
@@ -43,7 +43,7 @@ public class HelloResource {
       System.out.println("Received: " + inputJson);
       if (goslow) {
         try {
-          Thread.sleep(1000);
+          Thread.sleep(3000);
         } catch (Exception e) {
           System.err.println(e);
         }

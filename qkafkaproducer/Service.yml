@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: qkafkaproducer
+  labels:
+    app: qkafkaproducer    
+spec:
+  ports:
+  - name: http
+    port: 8080
+  selector:
+    app: qkafkaproducer
