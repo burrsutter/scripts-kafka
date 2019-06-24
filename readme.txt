@@ -3,7 +3,11 @@
 https://screencast.com/t/mLucXD01sq
 
 2. Create a Kafka cluster
-kubectl create -f kubefiles/newcluster.yaml
+kubectl create namespace franz
+kubens franz
+oc adm policy add-scc-to-user privileged -z default -n franz
+
+kubectl create -f kubefiles/burr-cluster-no-metrics.yaml
 
 3. Deploy the Kafka Channel CRD
 curl -L "https://raw.githubusercontent.com/openshift/knative-eventing/release-v0.6.0/openshift/release/knative-eventing-kafka-v0.6.0.yaml" \
@@ -14,10 +18,11 @@ curl -L "https://raw.githubusercontent.com/openshift/knative-eventing/release-v0
 
 4. Deploy the Kafka Event source CRD
 kubectl create namespace knative-sources
-kubectl apply -f https://raw.githubusercontent.com/openshift/knative-eventing-contrib/release-v0.6.0/openshift/release/knative-eventing-kafka-sources-v0.6.0.yaml
+# kubectl apply -f https://raw.githubusercontent.com/openshift/knative-eventing-contrib/release-v0.6.0/openshift/release/knative-eventing-kafka-sources-v0.6.0.yaml
+kubectl apply -f kubefiles/kafka-event-source.yaml
 
 5. Deploy the specific Kafka Event Source
-kubectl apply -f kafkasource2service.yaml
+kubectl apply -f kubefiles/kafkasource2service.yaml
 
 6. Deploy the consuming Knative service (indentified in the kafkasource2service.yaml)
 cd quarkus-kafka-knative-consumer

@@ -24,11 +24,21 @@ public class MyStreamPublisher {
     Emitter<String> emitter;
 
 
-    @Outgoing("mystream")
-    public Flowable<String> generate() {
-        return Flowable.interval(1000, TimeUnit.MILLISECONDS)
-                .map(msg -> "{\"message\":\"flowing-" + cnt++ +"\"}");
+    // @Outgoing("mystream")
+    // public Flowable<String> generate() {
+    //     return Flowable.interval(1000, TimeUnit.MILLISECONDS)
+    //             .map(msg -> "{\"message\":\"flowing-" + cnt++ +"\"}");
+    // }
+
+    @GET
+    @Path("/100")
+    public String send100() {
+      for (int i=0;i<100;i++) {
+        emitter.send("{\"message\":\"spamming-" + cnt++ +"\"}");
+      }
+      return "Sent 100";
     }
+
 
     @GET
     @Path("/10")
