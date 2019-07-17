@@ -38,7 +38,7 @@ public class MyStreamSubscriber {
  
     @Incoming("input")
     public void process(String msg) {
-        LOG.info("\nINPUT 1: " + msg);
+        LOG.info("\nBurr INPUT 1: " + msg);
     }     
 
     // @Incoming("input")

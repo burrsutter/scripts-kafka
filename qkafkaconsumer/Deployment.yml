@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Always # because I am in development-mode
         env:
         - name: MP_MESSAGING_INCOMING_INPUT_BOOTSTRAP_SERVERS
-          value: burr-cluster-kafka-bootstrap:9092
+          value: mycluster-kafka-bootstrap:9092
         ports:
           - containerPort: 8081
         resources:
