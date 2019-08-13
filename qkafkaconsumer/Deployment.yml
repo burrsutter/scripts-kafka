@@ -20,7 +20,8 @@ spec:
         imagePullPolicy: Always # because I am in development-mode
         env:
         - name: MP_MESSAGING_INCOMING_INPUT_BOOTSTRAP_SERVERS
-          value: mycluster-kafka-bootstrap:9092
+          value: hello-cluster-kafka-external-bootstrap:9094
+#          value: hello-cluster-kafka-bootstrap-franz.apps.one.burr.in
         ports:
           - containerPort: 8081
         resources:
@@ -28,5 +29,5 @@ spec:
             memory: "60Mi" 
             cpu: "250m" 
           limits:
-            memory: "60Mi"
+            memory: "100Mi"
             cpu: "250m" 

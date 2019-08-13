@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1alpha1
 kind: Kafka
 metadata: 
-  name: hello-cluster
+  name: arun-cluster
 spec:
   kafka:
     replicas: 3
