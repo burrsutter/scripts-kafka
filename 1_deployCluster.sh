@@ -9,4 +9,5 @@ kubens mystuff
 # the next line for using Knative 0.6
 oc adm policy add-scc-to-user privileged -z default -n mystuff
 
-kubectl apply -f kubefiles/burr-cluster-no-metrics.yaml
+# kubectl apply -f kubefiles/burr-cluster-no-metrics.yaml
+kubectl apply -f kubefiles/hello-kafka.yml
