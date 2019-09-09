@@ -7,7 +7,7 @@ spec:
     replicas: 3
     listeners:
       external:
-        type: NodePort
+        type: nodeport
     storage:
       type: ephemeral
   zookeeper:
