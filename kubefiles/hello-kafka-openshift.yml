@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1alpha1
 kind: Kafka
 metadata: 
-  name: sbb-cluster
+  name: rbc-cluster
 spec:
   kafka:
     replicas: 3
