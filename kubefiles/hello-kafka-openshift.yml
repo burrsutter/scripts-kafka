@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1alpha1
 kind: Kafka
 metadata: 
-  name: devoxx-cluster
+  name: burr-cluster
 spec:
   kafka:
     replicas: 3
