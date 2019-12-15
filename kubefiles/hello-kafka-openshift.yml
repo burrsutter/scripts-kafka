@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1alpha1
 kind: Kafka
 metadata: 
-  name: austin-cluster
+  name: mod-cluster
 spec:
   kafka:
     replicas: 3
