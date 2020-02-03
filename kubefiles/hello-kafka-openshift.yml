@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1alpha1
 kind: Kafka
 metadata: 
-  name: delta-cluster
+  name: jfokus-cluster
 spec:
   kafka:
     replicas: 3
